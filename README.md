@@ -1,1 +1,0 @@
-# Agricure-V1.0
