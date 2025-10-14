@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Media Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f9f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card .description {
+            padding: 15px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .card .description {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Crop Disease Media Resources</header>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1582515073490-3998130a8c5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHRvbWF0b3xlbnwwfHx8fDE2OTkxNjQwNjk&ixlib=rb-4.0.3&q=80&w=400" alt="Tomato Blight">
+            <div class="description">Tomato affected by early blight, showing dark spots on leaves.</div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600071976328-87aa8b53e46b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Potato Blight">
+            <div class="description">Potato leaves showing symptoms of late blight disease.</div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1602086447926-d3d0b0d17aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Rice Blast">
+            <div class="description">Rice crop with blast disease causing lesions on leaves.</div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600720463410-c04e2adfbc41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Wheat Rust">
+            <div class="description">Wheat affected by rust, with orange-brown pustules on leaves.</div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1611478690891-7faec9d6c780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Maize Leaf Spot">
+            <div class="description">Maize crop showing characteristic leaf spot disease symptoms.</div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1594388550930-3d44c7f5d1d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Citrus Canker">
+            <div class="description">Citrus leaves with canker lesions caused by bacterial infection.</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Farming | AGRICURE</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(90deg, #4CAF50, #2e7d32);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo img {
+      margin-right: 12px;
+      height: 45px;
+      border-radius: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: white;
+      bottom: -5px;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .scan-btn {
+      background: white;
+      color: #2e7d32;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .scan-btn:hover {
+      background: #e8f5e9;
+      transform: scale(1.05);
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      display: block;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero .slides img {
+      width: 100%;
+      height: 90vh;
+      object-fit: cover;
+      border-bottom: 5px solid #4CAF50;
+    }
+
+    .hero .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .hero .btn {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #2e7d32;
+      transform: scale(1.05);
+    }
+
+    /* FEATURES */
+    .section-title {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #e8f5e9 0%, #fff 100%);
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #2e7d32;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .feature {
+      text-align: center;
+      width: 250px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature i {
+      font-size: 40px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    /* TESTIMONIAL */
+    .testimonial {
+      background: linear-gradient(90deg, #4CAF50, #2e7d32);
+      color: #fff;
+      padding: 70px 20px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact {
+      background-color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .contact h3 {
+      font-size: 30px;
+      color: #2e7d32;
+      margin-bottom: 40px;
+    }
+
+    .contact-item {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .contact-item i {
+      color: #4CAF50;
+      margin-right: 10px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #f1f8e9;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .footer h3 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #2e7d32;
+    }
+
+    .footer .step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    .footer .step i {
+      color: #4CAF50;
+      font-size: 24px;
+      margin-right: 12px;
+    }
+
+    .footer .links a {
+      margin: 0 10px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer .links a:hover {
+      color: #4CAF50;
+    }
+
+    .footer .social a {
+      margin: 0 12px;
+      color: #333;
+      font-size: 24px;
+      transition: 0.3s;
+    }
+
+    .footer .social a:hover {
+      color: #4CAF50;
+    }
+
+    .footer .copyright {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* CHATBOT */
+    .chatbot-icon {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #4CAF50;
+      padding: 18px;
+      border-radius: 50%;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      animation: float 2s infinite;
+      transition: 0.3s ease;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .chatbot-icon:hover {
+      background-color: #388e3c;
+      transform: scale(1.1);
+      animation: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="AGRICURE LOGO"/>
+      AGRICURE
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="MainMedia.html">Media</a>
+      <div class="dropdown">
+       
+      </div>
+      <a href="login.html"><button class="scan-btn">Login</button></a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="slides"><img src="IMG1.jpg" alt="Farm"/></div>
+    <div class="slides"><img src="IMG2.jpg" alt="Plants"/></div>
+    <div class="slides"><img src="IMG3.jpg" alt="Greenhouse"/></div>
+    <div class="slides"><img src="IMG4.jpeg" alt="Vegetables"/></div>
+
+    <div class="text">
+      <h1>Revolutionize Your Farming with AI</h1>
+      <p>AI empowers farmers to predict plant diseases, insect infections, and nutrient deficiencies with precision, minimizing losses and maximizing yield sustainably.</p>
+      <a href="learnpopup.html"><button class="btn">Learn More</button></a>
+      <a href="aimodal.html"><button class="btn">Scan Now</button></a>
+    </div>
+  </div>
+
+  <section class="section-title">
+    <h2>Plant Disease Forecasting Model</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-brain"></i>
+        <p>Advanced AI Algorithms</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-clock"></i>
+        <p>Real-Time Disease Monitoring</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-seedling"></i>
+        <p>Smart Resource Management</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-chart-line"></i>
+        <p>Data-Driven Crop Insights</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <p>AI enhances farmers' wealth by optimizing crop management, reducing costs, and increasing yields. Data-driven farming empowers sustainable and profitable agriculture for every grower.</p>
+  </section>
+
+  <section class="contact">
+    <h3>Get in Touch</h3>
+    <div class="contact-item"><i class="fas fa-envelope"></i> General Inquiries: info@agricure.com</div>
+    <div class="contact-item"><i class="fas fa-phone"></i> Customer Support: </div>
+    <div class="contact-item"><i class="fas fa-comments"></i> Feedback: feedback@agricure.com</div>
+  </section>
+
+  <section class="footer">
+    <h3>How to Use Our AI Tools</h3>
+    <div class="step"><i class="fas fa-user-plus"></i> Sign Up: Create an account to access our AI tools.</div>
+    <div class="step"><i class="fas fa-upload"></i> Upload Crop Data: Provide necessary data for analysis.</div>
+    <div class="step"><i class="fas fa-chart-pie"></i> Get Predictions: Receive real-time predictions and take action.</div>
+
+    <div class="links">
+      <a href="#">Home</a>
+      <a href="#">Finance</a>
+      <a href="#">Media</a>
+    </div>
+
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <div class="copyright">
+      © 2025 AGRICURE. Empowering Farmers with AI Technology.
+    </div>
+  </section>
+
+  <div class="chatbot-icon"><i class="fas fa-robot"></i></div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slides");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000);
+    }
+  </script>
+
+</body>
+</html>

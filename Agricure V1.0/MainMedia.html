@@ -1,0 +1,401 @@
+<html lang="en" class="animate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Disease Media Resources</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* 🌿 GENERAL STYLES */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f0fff4, #e8f5e9);
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ✨ HEADER */
+    header {
+      background: linear-gradient(90deg, #4caf50, #2e7d32);
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: fadeDown 1s ease;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    header .logo img {
+      margin-right: 12px;
+      height: 45px;
+      border-radius: 8px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #c8e6c9;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* 🔽 DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      top: 100%;
+      z-index: 10;
+    }
+    .dropdown-content a {
+      color: #2e7d32;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    .dropdown-content a:hover {
+      background-color: #e8f5e9;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* 🌱 HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+      background-image: url('https://img.freepik.com/free-photo/close-up-green-wheat-field_181624-49313.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      background: #4caf50;
+      border: none;
+      padding: 12px 28px;
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+    .hero button:hover {
+      background: #43a047;
+      transform: translateY(-2px);
+    }
+
+    /* 📸 GALLERY */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1b5e20;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-subheading {
+      text-align: center;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .hover-zoom {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .hover-zoom:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+    .hover-zoom img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .hover-zoom:hover img {
+      transform: scale(1.1);
+    }
+    .overlay-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* 📰 ARTICLE SECTION */
+    .article-section {
+      margin-top: 100px;
+    }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .article-card {
+      background-color: white;
+      border-left: 6px solid #4caf50;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 💬 FAQ SECTION */
+    .faq-section {
+      background: linear-gradient(120deg, #e8f5e9, #f1f8e9);
+      padding: 80px 20px;
+      margin-top: 100px;
+      text-align: center;
+    }
+    .faq-container {
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+    }
+    .faq-container button {
+      background-color: #fff;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2e7d32;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-container button:hover {
+      background-color: #c8e6c9;
+    }
+    .answer {
+      background: #fff;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 15px 20px;
+      color: #555;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+      display: none;
+    }
+
+    /* 🌳 FOOTER */
+    footer {
+      background-color: #1b5e20;
+      color: #e8f5e9;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 100px;
+      border-top: 4px solid #4caf50;
+    }
+    footer a {
+      color: #c8e6c9;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* ✨ ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="Agricure Logo">
+      AGRICURE
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="MainMedia.html">Media</a>
+      <div class="dropdown">
+        <a href="#">Services</a>
+        <div class="dropdown-content">
+          <a href="weather.html">Weather</a>
+          <a href="#">Near Shop</a>
+          <a href="aimodal.html">Scan Image</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 🌿 HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Crop Disease Media Resources</h1>
+      <p>Explore our library of images, videos, and expert articles to identify and manage crop diseases effectively.</p>
+      <button onclick="window.location.href='Gallery.html'">Explore Gallery</button>
+    </div>
+  </section>
+
+  <main>
+    <!-- 🖼️ GALLERY -->
+    <h2 class="section-heading">Crop Disease Gallery</h2>
+    <p class="section-subheading">
+      Discover and learn about various crop diseases through visual references and scientific insights.
+    </p>
+
+    <div class="gallery-grid">
+      <div class="hover-zoom"><a href="#"><img src="Blight on Tomato.jpg" alt="Tomato Blight"><div class="overlay-text">Blight on Tomato</div></a></div>
+      <div class="hover-zoom"><a href="#"><img src="Wheat Rust.jpg" alt="Wheat Rust"><div class="overlay-text">Wheat Rust</div></a></div>
+      <div class="hover-zoom"><a href="#"><img src="corn smut.jpg" alt="Corn Smut"><div class="overlay-text">Corn Smut</div></a></div>
+      <div class="hover-zoom"><a href="#"><img src="potato blight.jpg" alt="Potato Blight"><div class="overlay-text">Potato Blight</div></a></div>
+      <div class="hover-zoom"><a href="#"><img src="rice scab.jpg" alt="Rice Blast"><div class="overlay-text">Rice Leaf Blast</div></a></div>
+      <div class="hover-zoom"><a href="#"><img src="apple scab.jpeg" alt="Apple Scab"><div class="overlay-text">Apple Scab</div></a></div>
+    </div>
+
+    <!-- 📰 ARTICLES -->
+    <section class="article-section">
+      <h2 class="section-heading">Crop Disease Articles</h2>
+      <p class="section-subheading">Stay informed with expert-written guides to identify, manage, and prevent crop diseases effectively.</p>
+
+      <div class="article-grid">
+        <div class="article-card">
+          <h3>Understanding Blight in Tomatoes</h3>
+          <p>Learn about causes, symptoms, and preventive measures for tomato blight.</p>
+        </div>
+        <div class="article-card">
+          <h3>Combating Wheat Rust</h3>
+          <p>Effective strategies to prevent and manage wheat rust in agricultural fields.</p>
+        </div>
+        <div class="article-card">
+          <h3>Dealing with Corn Smut</h3>
+          <p>Comprehensive overview of corn smut, its effects, and control techniques.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 💬 FAQ -->
+    <section class="faq-section">
+      <h1>Frequently Asked Questions</h1>
+      <div class="faq-container">
+        <button onclick="toggleVisibility('answer1')">What are common signs of crop diseases?<i class="fas fa-chevron-down"></i></button>
+        <div class="answer" id="answer1">Common signs include leaf spots, discoloration, wilting, and stunted growth.</div>
+
+        <button onclick="toggleVisibility('answer2')">How can AI help predict crop diseases?<i class="fas fa-chevron-down"></i></button>
+        <div class="answer" id="answer2">AI models can analyze weather, soil, and plant data to predict disease outbreaks early.</div>
+
+        <button onclick="toggleVisibility('answer3')">Where can I find expert resources?<i class="fas fa-chevron-down"></i></button>
+        <div class="answer" id="answer3">Visit our knowledge base for detailed guides, videos, and expert interviews.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 🌳 FOOTER -->
+  <footer>
+    <p>© 2025 AGROFIELD — Empowering Farmers with AI Technology 🌾</p>
+  </footer>
+
+  <script>
+    function toggleVisibility(id) {
+      const ans = document.getElementById(id);
+      ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
